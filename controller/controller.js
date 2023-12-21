@@ -11,28 +11,6 @@ export const allTaskDetails=async(req,res)=>{
     }
 };
 
-export const pagedTasksDetails = async (req, res) => {
-    const currentPage = parseInt(req.query.page) || 1;
-    const itemsPerPage = parseInt(req.query.limit) || 10;
-    try {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const totalDocuments = await taskModel.countDocuments({});
-        const totalPages = Math.ceil(totalDocuments / itemsPerPage);
-
-        const response = await taskModel.find({}).skip(startIndex).limit(itemsPerPage);
-
-        return res.status(200).json({
-            message: response,
-            pagination: {
-                currentPage: currentPage,
-                totalPages: totalPages,
-                totalItems: totalDocuments,
-            },
-        });
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
 
 export const taskDetail=async(req,res)=>{
     const taskId=req.params.id;
