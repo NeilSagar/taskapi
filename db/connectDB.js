@@ -6,7 +6,7 @@ const dburi="mongodb://localhost:27017/"+dbname;
 const connectDB=async()=>{
     try {
         await mongoose.connect(dburi);
-        console.log("Connect to db:"+dbname);
+        console.log("Connected to db:"+dbname);
     } catch (error) {
         console.log("Could not connect to db:"+dbname+"Error:"+error.message);
     }
