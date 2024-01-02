@@ -4,7 +4,6 @@ import taskModel from "../schema/taskSchema.js";
 export const allTaskDetails=async(req,res)=>{
     try {
         const response=await taskModel.find({});
-        
         return res.status(200).json({message:response});
     } catch (error) {
         return res.status(500).json({message:error.message});
