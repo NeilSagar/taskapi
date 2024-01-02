@@ -70,10 +70,6 @@ export const updateTask=async(req,res)=>{
     if(receivedData.taskId && taskId!==receivedData.taskId){
         return res.status(400).json({message:"Task-Id can not be changed."});
     }
-    if(!receivedData.taskTitle){
-        return res.status(400).json({message:"Task title can not be empty."});
-    }
-    const taskData=new taskModel(receivedData);
     try {
         const findDetail=await taskModel.findOne({taskId:taskId});
         if (!findDetail) {
